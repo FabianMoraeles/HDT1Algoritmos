@@ -49,6 +49,26 @@ public class Radio implements IRadio{
         this.station = station;
     }
 
+    @Override
+    public void saveStation(int buttonId, double station) {
+        if(Am){
+            AmButton[buttonId - 1] = station;
+        } else {
+            FmButton[buttonId - 1] = station;
+        }
+    }
+
+    @Override
+    public double SelectStation(int buttonId) {
+        if(Am){
+            station = AmButton[buttonId - 1];
+            return station;
+        } else {
+            station = FmButton[buttonId - 1];
+            return station;
+        }
+    }
+
 
     @Override
     // Método para cambiar entre AM y FM, donde si la variable "Am" es verdadera se encuentra en AM y si es falsa se encuentra en FM.
@@ -62,7 +82,27 @@ public class Radio implements IRadio{
         }
     }
 
+    @Override
+    public double nextStation() {
+        if(Am){
+            
+            AmStation += 10;
+            if(AmStation > 1610){
+                AmStation = 530;
+            }
+            station = AmStation;
+            return station;
+        } else {
 
+            FmStation += 0.2;
+            if(FmStation > 107.9){
+                FmStation = 87.9;
+            }
+            station = FmStation;
+            return station;
+
+        }
+    }
 
     @Override
     // Método para cambiar entre Encendido y Apagado, donde si la variable "On" es verdadera se encuentra encendida y si es falsa se encuentra apagada.
