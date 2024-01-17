@@ -49,6 +49,21 @@ public class Radio implements IRadio{
         this.station = station;
     }
 
+
+    @Override
+    // Método para cambiar entre AM y FM, donde si la variable "Am" es verdadera se encuentra en AM y si es falsa se encuentra en FM.
+    public void SwitchAmFm() {
+        if (Am){
+            Am = false;
+            station = FmStation;
+        } else {
+            Am = true;
+            station = AmStation;
+        }
+    }
+
+
+
     @Override
     // Método para cambiar entre Encendido y Apagado, donde si la variable "On" es verdadera se encuentra encendida y si es falsa se encuentra apagada.
     public void SwitchOnOff() {
@@ -60,7 +75,4 @@ public class Radio implements IRadio{
     }
 
 
-
-
-    
 }
